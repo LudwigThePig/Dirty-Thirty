@@ -21,7 +21,6 @@ export function Cursor ()  {
   const {position} = useMousePosition();
   const [{xPos, yPos}, setPos] = React.useState({xPos: 0, yPos: 0});
   React.useEffect(() => {
-    console.log('position changed');
     setPos(xyToLeftUp(position));
   }, [position]);
   return (
