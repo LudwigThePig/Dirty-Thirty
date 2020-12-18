@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useThrottle } from './useThrottle';
+import React, {useEffect} from 'react';
+import {useThrottle} from '@react-hook/throttle'
 
 export const useMousePosition = () => {
-  const [position, setPosition] = useThrottle({ xPos: 0, yPos: 0 }, 15);
+  const [position, setPosition] = useThrottle({ xPos: 0, yPos: 0 });
 
   useEffect(() => {
     const setFromMouseEvent = (e: MouseEvent) => setPosition({
@@ -14,7 +14,7 @@ export const useMousePosition = () => {
       yPos: touches[0].clientY,
     });
 
-    window.addEventListener('mousemove', (setFromMouseEvent));
+    window.addEventListener('mousemove', setFromMouseEvent);
     window.addEventListener('touchmove', setFromTouchEvent, false);
 
     return () => {

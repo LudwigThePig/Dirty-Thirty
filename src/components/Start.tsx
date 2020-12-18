@@ -19,7 +19,7 @@ export interface StartProps {
 export function Start({initSceneStart}: StartProps) {
   return (
     <Container onMouseEnter={() => initSceneStart()}>
-      <p>START HERE</p>
+      <p>HOVER HERE</p>
     </Container>
   );
 }

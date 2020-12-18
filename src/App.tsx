@@ -33,6 +33,8 @@ function App() {
         break;
       case Scenes.MODAL:
         // show modal...
+        setBackgroundProps({...backroundProps, xPos: 0});
+        setScene(Scenes.INITIAL);
         break;
     }
   };
