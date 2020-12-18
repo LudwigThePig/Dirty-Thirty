@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useThrottle } from './useThrottle';
 
 export const useMousePosition = () => {
-  const [position, setPosition] = useState({ xPos: 0, yPos: 0 });
+  const [position, setPosition] = useThrottle({ xPos: 0, yPos: 0 }, 15);
 
   useEffect(() => {
     const setFromMouseEvent = (e: MouseEvent) => setPosition({
@@ -13,7 +14,7 @@ export const useMousePosition = () => {
       yPos: touches[0].clientY,
     });
 
-    window.addEventListener('mousemove', setFromMouseEvent);
+    window.addEventListener('mousemove', (setFromMouseEvent));
     window.addEventListener('touchmove', setFromTouchEvent, false);
 
     return () => {

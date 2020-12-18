@@ -15,6 +15,8 @@ const CursorImg = styled.img<{xPos: number, yPos: number}>`
   top: ${props => props.yPos}px;
   height: ${SKIER_HEIGHT}px;
   width: ${SKIER_WIDTH}px;
+    transition: top 200ms, left 150ms;
+    transition-timing-function: linear;
 `;
 
 export function Cursor ()  {
