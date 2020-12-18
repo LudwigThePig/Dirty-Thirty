@@ -5,13 +5,11 @@ import { Scenes } from '../App';
 const Container = styled.div`
   height: 50px;
   width: 200px;
-  margin: 20px 40px;
   background: black;
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  
 `;
 
 export interface StartProps {
