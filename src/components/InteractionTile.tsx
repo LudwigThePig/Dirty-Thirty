@@ -32,7 +32,6 @@ export function InteracionTile({emitInteraction, scene}: InteracionTileProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === 'Space') {
-        console.log('Space!');
         emitInteraction();
       }
     }
@@ -44,7 +43,6 @@ export function InteracionTile({emitInteraction, scene}: InteracionTileProps) {
   });
 
   const {xPos, yPos} = getTriggerPosition(scene);
-  console.log('xPos, yPos', xPos, yPos, scene)
   return (
     <Tile 
       shouldShowTile={shouldShowTile}
