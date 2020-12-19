@@ -8,7 +8,6 @@ import {InteracionTile} from './components/InteractionTile';
 export enum Scenes {
   INITIAL = 'Initial',
   LIFT = 'Lift',
-  SKIING = 'Skiing',
   DOWNHILL = 'Downhil',
   LODGE = 'Lodge',
   MODAL = 'Modal',
@@ -20,12 +19,16 @@ function App() {
   const onInteraction = () => {
     switch (scene) {
       case Scenes.INITIAL:
-        setScene(Scenes.DOWNHILL);
+        setScene(Scenes.LIFT);
         setBackgroundProps({...backroundProps, xPos: -600});
+        break;
+      case Scenes.LIFT:
+        setScene(Scenes.DOWNHILL);
+        setBackgroundProps({...backroundProps, xPos: -1200});
         break;
       case Scenes.DOWNHILL:
         setScene(Scenes.LODGE);
-        setBackgroundProps({...backroundProps, xPos: -1200});
+        setBackgroundProps({...backroundProps, xPos: -1800});
         break;
       case Scenes.LODGE:
         setBackgroundProps({...backroundProps, xPos: -1800});

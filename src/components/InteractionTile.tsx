@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Scenes } from '../App';
-import { getPosition } from '../utils/constants';
+import { getTriggerPosition } from '../utils/constants';
 import { isDebug } from '../utils/debug';
 
 
@@ -11,8 +11,8 @@ interface ContainerProps {
   yPos: number;
 }
 const Container = styled.div<ContainerProps>`
-  height: 50px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   ${({shouldShowTile}) => shouldShowTile ? 
   ` 
     background: black;
@@ -21,6 +21,9 @@ const Container = styled.div<ContainerProps>`
     color: transparent;
     border: 2px solid teal;`
   }
+  position: absolute;
+  left: ${({xPos}) => xPos}px;
+  top: ${({yPos}) => yPos}px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,8 +50,8 @@ export function InteracionTile({emitInteraction, scene}: InteracionTileProps) {
     }
   });
 
-  const {xPos, yPos} = getPosition(scene);
-
+  const {xPos, yPos} = getTriggerPosition(scene);
+  console.log('xPos, yPos', xPos, yPos, scene)
   return (
     <Container 
       shouldShowTile={!shouldShowTile}

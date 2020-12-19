@@ -1,7 +1,7 @@
-export interface Positon {
+export interface Position {
   xPos: number;
   yPos: number;
 }
 
-export interface CursorState extends Positon {
+export interface CursorState extends Position {
 }
