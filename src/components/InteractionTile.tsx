@@ -5,22 +5,15 @@ import { getTriggerPosition } from '../utils/constants';
 import { isDebug } from '../utils/debug';
 
 
-interface ContainerProps {
+interface TileProps {
   shouldShowTile: boolean;
   xPos: number;
   yPos: number;
 }
-const Container = styled.div<ContainerProps>`
+const Tile = styled.div<TileProps>`
   height: 150px;
   width: 150px;
-  ${({shouldShowTile}) => shouldShowTile ? 
-  ` 
-    background: black;
-    color: white;` : 
-  `
-    color: transparent;
-    border: 2px solid teal;`
-  }
+  ${({shouldShowTile}) => shouldShowTile && 'border: 2px solid teal;'}
   position: absolute;
   left: ${({xPos}) => xPos}px;
   top: ${({yPos}) => yPos}px;
@@ -53,13 +46,12 @@ export function InteracionTile({emitInteraction, scene}: InteracionTileProps) {
   const {xPos, yPos} = getTriggerPosition(scene);
   console.log('xPos, yPos', xPos, yPos, scene)
   return (
-    <Container 
-      shouldShowTile={!shouldShowTile}
+    <Tile 
+      shouldShowTile={shouldShowTile}
       xPos={xPos}
       yPos={yPos}
       onMouseEnter={emitInteraction}
       onClick={emitInteraction}>
-      <p>HOVER HERE</p>
-    </Container>
+    </Tile>
   );
 }
