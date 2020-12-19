@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 
 import {Background, BackgroundProps} from './components/Background';
 import {Cursor} from './components/Cursor';
-import { LiftScene } from './components/LiftScene';
+import {Hint} from './components/Hint';
 import {InteracionTile} from './components/InteractionTile';
+import {Modal} from './components/Modal';
 
 export enum Scenes {
   INITIAL = 'Initial',
@@ -35,7 +36,6 @@ function App() {
         setScene(Scenes.MODAL);
         break;
       case Scenes.MODAL:
-        // show modal...
         setBackgroundProps({...backroundProps, xPos: 0});
         setScene(Scenes.INITIAL);
         break;
@@ -48,7 +48,8 @@ function App() {
         scene={scene}
         emitInteraction={onInteraction} />
       <Cursor />
-      {scene === Scenes.LIFT && <LiftScene />}
+      <Hint message={'Do something'} />
+      {scene === Scenes.MODAL && <Modal dismissModal={() => {onInteraction()}} />}
     </Background>
   );
 }
