@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {Background, BackgroundProps} from './components/Background';
 import {Cursor} from './components/Cursor';
 import { LiftScene } from './components/LiftScene';
-import {Start} from './components/Start';
+import {InteracionTile} from './components/InteractionTile';
 
 export enum Scenes {
   INITIAL = 'Initial',
@@ -17,7 +17,7 @@ export enum Scenes {
 function App() {
   const [scene, setScene] = useState<Scenes>(Scenes.INITIAL);
   const [backroundProps, setBackgroundProps] = useState<BackgroundProps>({xPos: 0})
-  const onInitSceneStart = () => {
+  const onInteraction = () => {
     switch (scene) {
       case Scenes.INITIAL:
         setScene(Scenes.DOWNHILL);
@@ -41,7 +41,9 @@ function App() {
 
   return (
     <Background {...backroundProps}>
-      <Start initSceneStart={onInitSceneStart} />
+      <InteracionTile 
+        scene={scene}
+        emitInteraction={onInteraction} />
       <Cursor />
       {scene === Scenes.LIFT && <LiftScene />}
     </Background>
