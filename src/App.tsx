@@ -5,6 +5,7 @@ import {Cursor} from './components/Cursor';
 import {Hint} from './components/Hint';
 import {InteracionTile} from './components/InteractionTile';
 import {Modal} from './components/Modal';
+import { adjustToScreenSize } from './utils/positioning';
 
 export enum Scenes {
   INITIAL = 'Initial',
@@ -19,26 +20,36 @@ function App() {
   const [backroundProps, setBackgroundProps] = useState<BackgroundProps>({xPos: 0})
   const onInteraction = () => {
     switch (scene) {
-      case Scenes.INITIAL:
+      case Scenes.INITIAL: {
+        const {xPos} = adjustToScreenSize({xPos: -600, yPos: 0});
         setScene(Scenes.LIFT);
-        setBackgroundProps({...backroundProps, xPos: -600});
+        setBackgroundProps({...backroundProps, xPos});
         break;
-      case Scenes.LIFT:
+      }
+      case Scenes.LIFT: {
+        const {xPos} = adjustToScreenSize({xPos: -1200, yPos: 0});
+        setBackgroundProps({...backroundProps, xPos});
         setScene(Scenes.DOWNHILL);
-        setBackgroundProps({...backroundProps, xPos: -1200});
         break;
-      case Scenes.DOWNHILL:
+      }
+      case Scenes.DOWNHILL: {
+        const {xPos} = adjustToScreenSize({xPos: -1800, yPos: 0});
+        setBackgroundProps({...backroundProps, xPos});
         setScene(Scenes.LODGE);
-        setBackgroundProps({...backroundProps, xPos: -1800});
         break;
-      case Scenes.LODGE:
-        setBackgroundProps({...backroundProps, xPos: -1800});
+      }
+      case Scenes.LODGE: {
+        const {xPos} = adjustToScreenSize({xPos: -1800, yPos: 0});
+        setBackgroundProps({...backroundProps, xPos});
         setScene(Scenes.MODAL);
         break;
-      case Scenes.MODAL:
-        setBackgroundProps({...backroundProps, xPos: 0});
+      }
+      case Scenes.MODAL: {
+        const {xPos} = adjustToScreenSize({xPos: 0, yPos: 0});
+        setBackgroundProps({...backroundProps, xPos});
         setScene(Scenes.INITIAL);
         break;
+      }
     }
   };
 
