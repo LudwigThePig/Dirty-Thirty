@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 
 import {Background, BackgroundProps} from './components/Background';
 import {Cursor} from './components/Cursor';
-import {Hint} from './components/Hint';
+import {TodoList} from './components/TodoList';
 import {InteracionTile} from './components/InteractionTile';
 import {Modal} from './components/Modal';
-import { adjustToScreenSize } from './utils/positioning';
+import {adjustToScreenSize} from './utils/positioning';
 
 export enum Scenes {
   INITIAL = 'Initial',
@@ -59,7 +59,7 @@ function App() {
         scene={scene}
         emitInteraction={onInteraction} />
       <Cursor />
-      <Hint message={'Do something'} />
+      <TodoList currentScene={scene} />
       {scene === Scenes.MODAL && <Modal dismissModal={() => {onInteraction()}} />}
     </Background>
   );
