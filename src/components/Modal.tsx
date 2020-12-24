@@ -56,7 +56,7 @@ export function Modal({dismissModal}: ModalProps) {
                rel="noopener noreferrer">
         747 West Pacific Avenue, Unit 333,<br/>Telluride, CO 81435, United States
       </Anchor>
-      <Image src="condo.jpg" />
+      <Image src="condo.jpg" alt="Condo living room picture" />
       <Button onClick={dismissModal}>DISMISS</Button>
     </Container>
   )
