@@ -14,6 +14,15 @@ export interface LiProps {
 const ListElement = styled.li<LiProps>`
   ${({visible}) => !visible && 'display: none;'}
   text-decoration: ${({completed}) => completed ? 'line-through' : 'none'};
+  list-style: none;
+`;
+
+const Container = styled.div`
+  margin: 1em;
+  & > h3, > ul {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export function TodoList({currentScene}: TodoProps) {
@@ -29,15 +38,15 @@ export function TodoList({currentScene}: TodoProps) {
     visible: curIndex >= liIndex,
   });
   return (
-    <div>
-      <h3>Todo: {index}</h3>
+    <Container>
+      <h3>Todo:</h3>
       <ul>
         <ListElement {...getLiProps(0, index)}>
           Get on the lift.
         </ListElement>
         
         <ListElement {...getLiProps(1, index)}>
-          Ride lift to the top of the hill.
+          Ride the lift to the top of the hill.
         </ListElement>
         
         <ListElement {...getLiProps(2, index)}>
@@ -53,6 +62,6 @@ export function TodoList({currentScene}: TodoProps) {
         </ListElement>
       </
       ul>
-    </div>
+    </Container>
   );
 }
