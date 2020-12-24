@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export interface BackgroundProps {
   xPos: number;
+  showCursor: boolean;
 }
 
 export const Background = styled.div<BackgroundProps>`
@@ -12,4 +13,5 @@ export const Background = styled.div<BackgroundProps>`
   background-size: auto 100vh;
   background-position-x: ${props => props.xPos}px;
   transition: background-position-x 800ms;
+  cursor: ${({showCursor}) => showCursor ? 'auto' : 'none'};
 `;

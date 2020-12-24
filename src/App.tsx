@@ -17,7 +17,7 @@ export enum Scenes {
 
 function App() {
   const [scene, setScene] = useState<Scenes>(Scenes.INITIAL);
-  const [backroundProps, setBackgroundProps] = useState<BackgroundProps>({xPos: 0})
+  const [backroundProps, setBackgroundProps] = useState<BackgroundProps>({xPos: 0, showCursor: false})
   const onInteraction = () => {
     switch (scene) {
       case Scenes.INITIAL: {
@@ -33,20 +33,20 @@ function App() {
         break;
       }
       case Scenes.DOWNHILL: {
-        const {xPos} = adjustToScreenSize({xPos: -1800, yPos: 0});
+        const {xPos} = adjustToScreenSize({xPos: -2000, yPos: 0});
         setBackgroundProps({...backroundProps, xPos});
         setScene(Scenes.LODGE);
         break;
       }
       case Scenes.LODGE: {
-        const {xPos} = adjustToScreenSize({xPos: -1800, yPos: 0});
-        setBackgroundProps({...backroundProps, xPos});
+        const {xPos} = adjustToScreenSize({xPos: -2000, yPos: 0});
+        setBackgroundProps({...backroundProps, xPos, showCursor: true});
         setScene(Scenes.MODAL);
         break;
       }
       case Scenes.MODAL: {
         const {xPos} = adjustToScreenSize({xPos: 0, yPos: 0});
-        setBackgroundProps({...backroundProps, xPos});
+        setBackgroundProps({...backroundProps, xPos, showCursor: false});
         setScene(Scenes.INITIAL);
         break;
       }
@@ -61,6 +61,10 @@ function App() {
       <Cursor />
       <TodoList currentScene={scene} />
       {scene === Scenes.MODAL && <Modal dismissModal={() => {onInteraction()}} />}
+      {
+        window.innerWidth < adjustToScreenSize({xPos: 1100, yPos:0}).xPos &&
+          <h3>Your screen isn't wide enough for this game. Try making your browser window shorter.</h3>
+      }
     </Background>
   );
 }

@@ -50,7 +50,7 @@ export function TodoList({currentScene}: TodoProps) {
         </ListElement>
         
         <ListElement {...getLiProps(2, index)}>
-          Shred the gnar.
+          Shred the gnar, make it into town.
         </ListElement>
         
         <ListElement {...getLiProps(3, index)}>
